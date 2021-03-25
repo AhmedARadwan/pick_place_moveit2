@@ -65,7 +65,7 @@ def generate_launch_description():
                                            moveit_controllers])
 
     # RViz
-    rviz_config_file = get_package_share_directory('run_moveit_cpp') + "/launch/pick_place_moveit2.rviz"
+    rviz_config_file = get_package_share_directory('pick_place_moveit2') + "/launch/pick_place_moveit2.rviz"
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2',
@@ -94,8 +94,8 @@ def generate_launch_description():
                                   # TODO(JafarAbdi): Why this launch the two nodes (controller manager and the fake joint driver) with the same name!
                                   # name='fake_joint_driver_node',
                                   parameters=[{'controller_name': 'panda_arm_controller'},
-                                              os.path.join(get_package_share_directory("run_moveit_cpp"), "config", "panda_controllers.yaml"),
-                                              os.path.join(get_package_share_directory("run_moveit_cpp"), "config", "start_positions.yaml"),
+                                              os.path.join(get_package_share_directory("pick_place_moveit2"), "config", "panda_controllers.yaml"),
+                                              os.path.join(get_package_share_directory("pick_place_moveit2"), "config", "start_positions.yaml"),
                                               robot_description]
                                   )
 
