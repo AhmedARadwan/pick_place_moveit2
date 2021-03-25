@@ -11,6 +11,10 @@
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+  
+  <build_depend>moveit_common</build_depend>
+
+  <depend>moveit_ros_planning_interface</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
