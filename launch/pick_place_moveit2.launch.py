@@ -27,7 +27,7 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
     # moveit_cpp.yaml is passed by filename for now since it's node specific
-    moveit_cpp_yaml_file_name = get_package_share_directory('run_moveit_cpp') + "/config/moveit_cpp.yaml"
+    moveit_cpp_yaml_file_name = get_package_share_directory('pick_place_moveit2') + "/config/moveit_cpp.yaml"
 
     # Component yaml files are grouped in separate namespaces
     robot_description_config = load_file('moveit_resources_panda_description', 'urdf/panda.urdf')
@@ -39,7 +39,7 @@ def generate_launch_description():
     kinematics_yaml = load_yaml('moveit_resources_panda_moveit_config', 'config/kinematics.yaml')
     robot_description_kinematics = { 'robot_description_kinematics' : kinematics_yaml }
 
-    controllers_yaml = load_yaml('run_moveit_cpp', 'config/controllers.yaml')
+    controllers_yaml = load_yaml('pick_place_moveit2', 'config/controllers.yaml')
     moveit_controllers = { 'moveit_simple_controller_manager' : controllers_yaml,
                            'moveit_controller_manager': 'moveit_simple_controller_manager/MoveItSimpleControllerManager'}
 
@@ -51,11 +51,11 @@ def generate_launch_description():
     ompl_planning_pipeline_config['ompl'].update(ompl_planning_yaml)
 
     # MoveItCpp demo executable
-    run_moveit_cpp_node = Node(name='run_moveit_cpp',
-                               package='run_moveit_cpp',
+    run_moveit_cpp_node = Node(name='pick_place_moveit2',
+                               package='pick_place_moveit2',
                                # TODO(henningkayser): add debug argument
                                # prefix='xterm -e gdb --args',
-                               executable='run_moveit_cpp',
+                               executable='pick_place_moveit2',
                                output='screen',
                                parameters=[moveit_cpp_yaml_file_name,
                                            robot_description,
@@ -65,7 +65,7 @@ def generate_launch_description():
                                            moveit_controllers])
 
     # RViz
-    rviz_config_file = get_package_share_directory('run_moveit_cpp') + "/launch/run_moveit_cpp.rviz"
+    rviz_config_file = get_package_share_directory('run_moveit_cpp') + "/launch/pick_place_moveit2.rviz"
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2',
