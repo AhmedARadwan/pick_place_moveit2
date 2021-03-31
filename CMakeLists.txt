@@ -12,10 +12,12 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(moveit_common REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 # This shouldn't be necessary (required by moveit_simple_controller_manager)
 find_package(rosidl_default_runtime REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
+find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
